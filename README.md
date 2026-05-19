@@ -134,6 +134,7 @@ The formula for the reconstruction error is evaluated continuously:
 $MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y_i})^2$
 
 * **$Y_i$** = The actual observed telemetry value from the ESP32-S3.
+
 * **$\hat{Y_i}$** = The value reconstructed by the LSTM Autoencoder.
 
 During normal operation, the MSE hovers below a calculated `MAX_NORMAL_MSE` threshold. When an attack scenario (like FDI or a Replay attack) occurs, the model fails to reconstruct the malicious pattern, causing the MSE to spike exponentially. The Grafana SOC dashboard tracks this MSE value in real-time, instantly shifting from a green status to critical red when the threshold is breached, enabling rapid Blue Team response.
